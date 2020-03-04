@@ -53,5 +53,16 @@ class Elevator {
 			}
 		}
 	}
+	
+	int removeMatchingVisitors() {
+		int cnt = 0;
+		for(Visitor visitor:visitors) {
+			if(this.currentFloor == visitor.targetFloor) {
+				cnt++;
+				visitors.remove(visitor);
+			}
+		}
+		return cnt;
+	}
 
 }

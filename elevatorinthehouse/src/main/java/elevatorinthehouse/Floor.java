@@ -10,6 +10,10 @@ class Floor {
 	List<Visitor> visitors = new ArrayList<>();
 	int number;
 
+	public Floor() {
+		
+	}
+	
 	public Floor(int number) {
 		Random rnd = new Random();
 		int visitorsCnt = rnd.nextInt(MAX_VISITORS_PER_FLOOR);		
@@ -24,6 +28,10 @@ class Floor {
 				+ "]";
 	}
 	
+	public void addVisitors(int cnt) {
+		while(cnt-->0)
+			visitors.add(new Visitor());
+	}
 	
 
 }

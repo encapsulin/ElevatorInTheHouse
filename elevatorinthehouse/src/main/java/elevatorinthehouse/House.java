@@ -24,21 +24,31 @@ class House {
 			 }
 	 }
 	 
-	 public void proceed() {
-		 moveVisitorsToFromElevator();
-		 moveElevator();		 
-		 draw();
-	 }
+//	 public void proceed() {
+//		 draw();
+//		 moveVisitorsToFromElevator();
+//		 draw();
+//		 moveElevator();		 
+//		 
+//	 }
 	 
-	 private void moveElevator() {
+	 public void moveElevator() {
 		// TODO Auto-generated method stub
 		 elevator.move();
 	}
 
-	private void moveVisitorsToFromElevator() {
-		// TODO Auto-generated method stub
-		
+	 public void moveVisitorsFromElevator() {
+		 int cnt = elevator.removeMatchingVisitors();
+		 Floor floor = new Floor(elevator.currentFloor);
+		 floor.addVisitors(cnt);
 	}
+	 
+	 public void moveVisitorsToElevator() {
+		 int cnt = elevator.removeMatchingVisitors();
+		 Floor floor = new Floor(elevator.currentFloor);
+		 floor.addVisitors(cnt);
+		
+	}	 
 
 	public void draw() {
 		 for(int i=floorsCount-1;i>=0 ;i--) {
