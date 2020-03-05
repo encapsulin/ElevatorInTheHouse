@@ -6,7 +6,7 @@ import java.util.List;
 class Elevator {
 
 	int capacity = 5;
-	int currentFloor;
+	int currentFloorIndex;
 	List<Visitor> visitors = new ArrayList<>();
 	boolean directionUp = true;
 
@@ -23,7 +23,7 @@ class Elevator {
 		s += cDirection;
 
 		for (Visitor visitor : visitors)
-			s += visitor.targetFloor + ".";
+			s += visitor.targetFloor + ". ";
 
 		for (int i = 0; i < capacity - visitors.size(); i++)
 			s += "  .";
@@ -36,38 +36,44 @@ class Elevator {
 		System.out.print("|                 |");
 	}
 
-	public void move() {
+	public void move1() {
 		if (directionUp) {
-			if (currentFloor < House.floorsCount-1)
-				currentFloor++;
-			else if (currentFloor == House.floorsCount-1) {
-				currentFloor--;
+			if (currentFloorIndex < House.floorsCount)
+				currentFloorIndex++;
+			if (currentFloorIndex == House.floorsCount) {
+				currentFloorIndex--;
 				directionUp = !directionUp;
 			}
-		}else {
-			if (currentFloor > 0)
-				currentFloor--;
-			else if (currentFloor == 0) {
-				currentFloor++;
+		} else {
+			if (currentFloorIndex > 0)
+				currentFloorIndex--;
+			else if (currentFloorIndex == 0) {
+				currentFloorIndex++;
 				directionUp = !directionUp;
 			}
 		}
 	}
-	
-	int removeMatchingVisitors() {
-		int cnt = 0;
-		for(Visitor visitor:visitors) {
-			if(this.currentFloor == visitor.targetFloor) {
-				cnt++;
-				visitors.remove(visitor);
-			}
+
+	public void move() {
+		if (directionUp)
+			currentFloorIndex++;
+		else
+			currentFloorIndex--;
+
+		if (currentFloorIndex >= House.floorsCount) {
+			currentFloorIndex--;
 		}
-		return cnt;
-	}
-	
-	boolean isEmpty() {
-		return visitors.size() == 0;
-	}
+		if (currentFloorIndex >= House.floorsCount -1) {
+			directionUp = !directionUp;
+		}		
+
+		if (currentFloorIndex < 0) {
+			currentFloorIndex++;
+		}
+		if (currentFloorIndex == 0) {
+			directionUp = !directionUp;
+		}		
+
 	}
 
 }
