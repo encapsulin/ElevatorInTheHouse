@@ -24,16 +24,7 @@ class House {
 			 }
 	 }
 	 
-//	 public void proceed() {
-//		 draw();
-//		 moveVisitorsToFromElevator();
-//		 draw();
-//		 moveElevator();		 
-//		 
-//	 }
-	 
 	 public void moveElevator() {
-		// TODO Auto-generated method stub
 		 elevator.move();
 	}
 
@@ -44,9 +35,11 @@ class House {
 	}
 	 
 	 public void moveVisitorsToElevator() {
-		 int cnt = elevator.removeMatchingVisitors();
 		 Floor floor = new Floor(elevator.currentFloor);
-		 floor.addVisitors(cnt);
+		 if(elevator.visitors.size() == 0 && floor.visitors.size() > 0) {
+			 
+			 
+		 }
 		
 	}	 
 

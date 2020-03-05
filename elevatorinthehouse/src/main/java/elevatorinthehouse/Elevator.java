@@ -64,5 +64,10 @@ class Elevator {
 		}
 		return cnt;
 	}
+	
+	boolean isEmpty() {
+		return visitors.size() == 0;
+	}
+	}
 
 }
