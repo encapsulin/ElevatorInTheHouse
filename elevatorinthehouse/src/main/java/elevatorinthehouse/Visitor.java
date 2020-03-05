@@ -9,6 +9,10 @@ class Visitor {
 		Random rnd = new Random();
 		targetFloor = 1 + rnd.nextInt(House.floorsCount);
 	}
+	
+	public Visitor(int targetFloor) {
+		this.targetFloor = targetFloor;
+	}
 
 	@Override
 	public String toString() {

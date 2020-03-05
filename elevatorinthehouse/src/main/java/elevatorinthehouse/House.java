@@ -51,11 +51,15 @@ class House {
 		Floor floor = floors[elevator.currentFloorIndex];
 
 		List<Visitor> visitorsToMove = new ArrayList<>();
+
+		if (elevator.visitors.size() == 0)
+			floor.sortVisitorsByTheirTargetFloor();
+
 		for (Visitor visitor : floor.visitors) {
 			if (elevator.directionUp && visitor.targetFloor > floor.number
-				|| !elevator.directionUp && visitor.targetFloor < floor.number) {
+					|| !elevator.directionUp && visitor.targetFloor < floor.number) {
 				visitorsToMove.add(visitor);
-			} 
+			}
 		}
 
 		for (Visitor visitor : visitorsToMove) {
