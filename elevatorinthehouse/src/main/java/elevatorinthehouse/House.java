@@ -2,6 +2,7 @@ package elevatorinthehouse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 class House {
 
@@ -19,6 +20,8 @@ class House {
 	}
 
 	public void initFloors() {
+		Random rnd = new Random();
+		floorsCount = 5 + rnd.nextInt(16);
 		floors = new Floor[floorsCount];
 		for (int i = 0; i < floorsCount; i++) {
 			floors[i] = new Floor(i + 1);
